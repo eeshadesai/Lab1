@@ -3,6 +3,7 @@ const logger = require("morgan");
 const express = require( "express" );
 const app = express();
 const port = 8080;
+const db = require("./db/db_connection");
 
 // define middleware that logs all incoming requests
 app.use(logger("dev"));
@@ -16,11 +17,25 @@ app.get( "/", ( req, res ) => {
 
 // define a route for the stuff inventory page
 app.get( "/stuff", ( req, res ) => {
+    //db.execute('SELECT id,item,quantity FROM stuff',(error,results)=> {
+    //if(error) {
+    // res.status(500).send(error);
+    //} else {
+    //    res.send(results);
+    //}
+    //}
     res.sendFile( __dirname + "/views/classes.html" );
 } );
 
 // define a route for the item  page
 app.get( "/stuff/item", ( req, res ) => {
+    //db.execute('SELECT id,item,quantity FROM stuff WHERE id=0',(error,results)=> {
+    //if(error) {
+    // res.status(500).send(error);
+    //} else {
+    //    res.send(results);
+    //}
+    //}
     res.sendFile( __dirname + "/views/assignments.html" );
 } );
 
